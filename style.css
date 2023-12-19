@@ -52,16 +52,43 @@ button:hover {
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
     margin-top: 20px;
+    border-radius: 10px; /* Borda arredondada para a tabela */
+    overflow: hidden; /* Garante que o conteúdo interno não sobreponha as bordas arredondadas */
 }
 
 th, td {
-    text-align: center; /* Centraliza o texto nas tabelas */
+    text-align: center;
     padding: 15px;
     border-bottom: 1px solid #ddd;
-    font-size: 18px; /* Fonte maior para tabelas em mobile */
+    font-size: 18px;
 }
+
+th {
+    background-color: #4CAF50; /* Cor de fundo para o cabeçalho */
+    color: white;
+    border-top-left-radius: 10px; /* Arredonda o canto superior esquerdo */
+    border-top-right-radius: 10px; /* Arredonda o canto superior direito */
+}
+
+tr:nth-child(odd) {
+    background-color: #f2f2f2; /* Cor de fundo para linhas ímpares */
+}
+
+tr:nth-child(even) {
+    background-color: #ffffff; /* Cor de fundo para linhas pares */
+}
+
+tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Arredonda o canto inferior esquerdo */
+}
+
+tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Arredonda o canto inferior direito */
+}
+
 
 @media (max-width: 600px) {
     /* Estilos para tablets e desktops */
