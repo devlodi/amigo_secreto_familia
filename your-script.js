@@ -1,28 +1,38 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, push, onValue } from "firebase/database";
+// Já que estamos usando a versão de CDN, não precisamos do import aqui.
+// O Firebase já estará disponível globalmente.
 
-// Seu código de configuração do Firebase aqui
+// Configuração do Firebase. Isso é seguro para ser exposto publicamente conforme a documentação do Firebase.
 const firebaseConfig = {
-  // Sua configuração
+  apiKey: "your-api-key",
+  authDomain: "your-project-auth-domain",
+  databaseURL: "your-database-url",
+  projectId: "your-project-id",
+  storageBucket: "your-storage-bucket",
+  messagingSenderId: "your-messaging-sender-id",
+  appId: "your-app-id"
 };
 
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-function submitName() {
+// Referência ao banco de dados
+const database = firebase.database();
+
+// Esta função deve estar disponível globalmente para ser acessada pelo atributo onclick do seu HTML.
+window.submitName = function() {
     const nameInput = document.getElementById('nameInput');
     const name = nameInput.value;
     const dateTime = new Date().toISOString();
     
     // Insere o nome no banco de dados Firebase
-    push(ref(database, 'participants'), {
+    firebase.database().ref('participants').push().set({
         nome: name,
         data_hora: dateTime
     });
 }
 
 // Escuta por novos participantes e atualiza a tabela
-onValue(ref(database, 'participants'), (snapshot) => {
+firebase.database().ref('participants').on('value', (snapshot) => {
     const participantsTable = document.getElementById('participantsTable');
     
     // Limpa a tabela antes de inserir os novos valores
