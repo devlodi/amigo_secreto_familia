@@ -7,7 +7,7 @@ body {
 }
 
 .main-container {
-    max-width: 80%px;
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     text-align: center;
@@ -32,6 +32,25 @@ h2 {
     align-items: center;
     margin-bottom: 20px;
 }
+
+.success-message {
+    color: #28a745; /* Cor verde para sucesso */
+    background-color: #dff0d8;
+    border-color: #d4edda;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    display: none; /* Inicialmente oculto */
+}
+
+.success-message.hidden {
+    display: none;
+}
+
+.success-message.visible {
+    display: block; /* Mostrar quando necessário */
+}
+
 
 input[type="text"] {
     padding: 15px;
@@ -126,3 +145,13 @@ tr:last-child td:last-child {
     button {
         width: auto; /* Largura padrão para botão */
     }
+
+    .counters {
+    margin-top: 20px;
+}
+
+.counters > div {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
