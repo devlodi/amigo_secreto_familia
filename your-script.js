@@ -2,14 +2,15 @@
 // O Firebase já estará disponível globalmente.
 
 // Configuração do Firebase. Isso é seguro para ser exposto publicamente conforme a documentação do Firebase.
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "your-api-key",
-  authDomain: "your-project-auth-domain",
-  databaseURL: "your-database-url",
-  projectId: "your-project-id",
-  storageBucket: "your-storage-bucket",
-  messagingSenderId: "your-messaging-sender-id",
-  appId: "your-app-id"
+  apiKey: "AIzaSyDXOqm52mwBr4RH3KuP5MrGeyYg1qQy27M",
+  authDomain: "amigo-secreto-8b3ae.firebaseapp.com",
+  databaseURL: "https://amigo-secreto-8b3ae-default-rtdb.firebaseio.com",
+  projectId: "amigo-secreto-8b3ae",
+  storageBucket: "amigo-secreto-8b3ae.appspot.com",
+  messagingSenderId: "133611460498",
+  appId: "1:133611460498:web:2641aafc8c318aaa4d134b"
 };
 
 // Initialize Firebase
