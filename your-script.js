@@ -1,8 +1,4 @@
-// Já que estamos usando a versão de CDN, não precisamos do import aqui.
-// O Firebase já estará disponível globalmente.
-
-// Configuração do Firebase. Isso é seguro para ser exposto publicamente conforme a documentação do Firebase.
-// Your web app's Firebase configuration
+// A configuração do Firebase. Isso é seguro para ser exposto publicamente conforme a documentação do Firebase.
 const firebaseConfig = {
   apiKey: "AIzaSyDXOqm52mwBr4RH3KuP5MrGeyYg1qQy27M",
   authDomain: "amigo-secreto-8b3ae.firebaseapp.com",
@@ -13,30 +9,29 @@ const firebaseConfig = {
   appId: "1:133611460498:web:2641aafc8c318aaa4d134b"
 };
 
-// Initialize Firebase
+// Inicialize o Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Referência ao banco de dados
 const database = firebase.database();
 
-// Esta função deve estar disponível globalmente para ser acessada pelo atributo onclick do seu HTML.
-window.submitName = function() {
+function submitName() {
     const nameInput = document.getElementById('nameInput');
     const name = nameInput.value;
     const dateTime = new Date().toISOString();
-    
-    // Insere o nome no banco de dados Firebase
+
+    // Insira o nome no banco de dados Firebase
     firebase.database().ref('participants').push().set({
         nome: name,
         data_hora: dateTime
     });
 }
 
-// Escuta por novos participantes e atualiza a tabela
+// Escute por novos participantes e atualize a tabela
 firebase.database().ref('participants').on('value', (snapshot) => {
     const participantsTable = document.getElementById('participantsTable');
     
-    // Limpa a tabela antes de inserir os novos valores
+    // Limpe a tabela antes de inserir os novos valores
     participantsTable.innerHTML = `
         <tr>
             <th>Nome</th>
@@ -47,7 +42,7 @@ firebase.database().ref('participants').on('value', (snapshot) => {
     snapshot.forEach((childSnapshot) => {
         const childData = childSnapshot.val();
         
-        // Cria uma nova linha na tabela para cada participante
+        // Crie uma nova linha na tabela para cada participante
         const row = participantsTable.insertRow(-1);
         const cellName = row.insertCell(0);
         const cellDate = row.insertCell(1);
