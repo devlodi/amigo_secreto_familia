@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Amigo Secreto</title>
+</head>
+<body>
+
+<div>
+    <h1>Amigo Secreto</h1>
+    <input type="text" id="nameInput" placeholder="Digite seu nome">
+    <button onclick="submitName()">Enviar</button>
+</div>
+
+<div>
+    <h2>Participantes</h2>
+    <table id="participantsTable">
+        <tr>
+            <th>Nome</th>
+            <th>Data e Hora</th>
+        </tr>
+        <!-- Os participantes serão inseridos aqui -->
+    </table>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+<script src="your-script.js"></script> <!-- Caminho para o seu script JS -->
+
+</body>
+</html>
