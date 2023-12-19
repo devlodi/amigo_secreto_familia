@@ -156,7 +156,7 @@ tr:last-child td:last-child {
 
 .modal-aviso-texto {
     color: white; /* Ou outra cor que destaque sobre a imagem */
-    font-size: 18px; /* Ajuste o tamanho conforme necessário */
+    font-size: 50px; /* Ajuste o tamanho conforme necessário */
     padding: 20px; /* Ajuste o espaçamento conforme necessário */
     border-radius: 10px;
     background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente para destaque */
@@ -175,6 +175,7 @@ tr:last-child td:last-child {
 }
 
 .btn-entendi {
+      font-size: 30px; /* Ajuste o tamanho conforme necessário */
     margin-top: 20px; /* Ajuste o espaçamento conforme necessário */
     padding: 10px 20px;
     background-color: #008CBA;
