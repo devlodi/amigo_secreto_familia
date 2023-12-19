@@ -7,16 +7,25 @@
 </head>
 <body>
 
+<div id="modalAviso" class="modal-aviso">
+    <div class="modal-aviso-content">
+        <p class="modal-aviso-texto">BEM VINDO FAMILIA<br><br>SE FOR PARTICIPAR, SÓ COLOCAR O NOME E CLIAR EM "PARTICIPAR"<br><br>AI A GENTE JA VAI VENDO QUEM VAI PARTICIPAR E QUAL VAI SER OS PRÊMIOS</p>
+        <button class="btn-entendi" onclick="fecharModalAviso()">Entendi</button>
+    </div>
+</div>
+
+
 <div class="main-container">
     <h1>Amigo Secreto</h1>
     <div class="input-group">
         <label for="nameInput" style="background-color: white; border-radius: 10px; padding: 5px; font-size: 20px;">Digite seu nome:</label>
         <input type="text" id="nameInput" placeholder="Nome">
-        <button onclick="submitName()">CLIQUE PARA PARTICIPAR</button>
+        <button onclick="submitName()">PARTICIPAR</button>
     </div>
 
+            <label for="nameInput" style="background-color: white; border-radius: 10px; padding: 5px; font-size: 20px;">Total até agora(1 barra por pessoa + $10):</label>
     <div class="counters">
-    <div id="chocolateCount" style="background-color: white; padding: 5px 10px; display: inline-block; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-weight: bold;">Chocolates🍫: 0</div>
+    <div id="chocolateCount" style="background-color: white; margin: 10px; padding: 5px 10px; display: inline-block; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-weight: bold;">Chocolates🍫: 0</div>
 
     <div id="moneyCount" style="background-color: white; padding: 5px 10px; display: inline-block; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-weight: bold;">Dinheiro💰: $0</div>
     </div>
@@ -127,6 +136,28 @@ function formatDateTime(isoString) {
   return new Date(isoString).toLocaleDateString('pt-BR', options);
 }
 
+
+
+
+</script>
+
+<script>
+    
+window.onload = function() {
+    // Exibe o modal ao carregar a página
+    var modalAviso = document.getElementById("modalAviso");
+    modalAviso.style.display = "flex";
+    
+    // Define um temporizador para fechar o modal após 5 segundos (5000 milissegundos)
+    setTimeout(function() {
+        modalAviso.style.display = "none";
+    }, 30000); // 5000 milissegundos = 5 segundos
+}
+
+
+function fecharModalAviso() {
+    document.getElementById("modalAviso").style.display = "none";
+}
 
 
 
