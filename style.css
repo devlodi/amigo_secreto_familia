@@ -2,8 +2,12 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f7f7f7;
     font-size: 16px; /* Tamanho de fonte base para mobile */
+    background-image: url('https://raw.githubusercontent.com/devlodi/amigo_secreto_familia/main/family.jpg');
+    background-size: cover; /* Redimensiona a imagem para cobrir todo o fundo */
+    background-blur: 5px; /* Aplica um desfoque de 5px à imagem (ajuste conforme desejado) */
+    background-color: rgba(0, 0, 0, 0.7); /* Define uma cor de fundo preto com 50% de opacidade por trás da imagem */
+    background-blend-mode: overlay; /* Mescla a imagem com o fundo preto */
 }
 
 .main-container {
@@ -13,17 +17,26 @@ body {
     text-align: center;
 }
 
-h1{
+h1 {
     color: #333;
-    margin: 20px 0;
-    font-size: 50px; /* Fonte maior para títulos em mobile */
+    margin: 20px auto; /* Margem automática nas laterais para centralizar */
+    font-size: 50px; /* Tamanho da fonte */
+    background-color: white; /* Cor de fundo */
+    padding: 10px 20px; /* Espaço vertical e um pouco de espaço horizontal */
+    display: inline-block; /* Faz com que o fundo se ajuste ao conteúdo */
+    border-radius: 10px; /* Cantos arredondados */
 }
+
 
 
 h2 {
     color: #333;
     margin: 20px 0;
     font-size: 24px; /* Fonte maior para títulos em mobile */
+    background-color: white; /* Cor de fundo */
+    padding: 10px 20px; /* Espaço vertical e um pouco de espaço horizontal */
+    display: inline-block; /* Faz com que o fundo se ajuste ao conteúdo */
+    border-radius: 10px; /* Cantos arredondados */
 }
 
 .input-group {
@@ -146,12 +159,5 @@ tr:last-child td:last-child {
         width: auto; /* Largura padrão para botão */
     }
 
-    .counters {
-    margin-top: 20px;
-}
 
-.counters > div {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
-}
+
