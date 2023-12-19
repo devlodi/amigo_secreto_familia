@@ -15,6 +15,15 @@
         <button onclick="submitName()">Enviar</button>
     </div>
 
+    <div class="counters">
+    <div id="chocolateCount">Chocolates🍫: 0</div>
+    <div id="moneyCount">Dinheiro💰: $0</div>
+</div>
+
+
+    <div id="successMessage" class="success-message hidden">Boaaa, ja ta na lista!!!</div>
+
+
     <div class="participants-section">
         <h2>Participantes</h2>
         <table id="participantsTable">
@@ -45,20 +54,38 @@
   const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
 
-  window.submitName = function() {
-      const nameInput = document.getElementById('nameInput');
-      const name = nameInput.value;
-      const dateTime = new Date().toISOString();
+window.submitName = function() {
+    const nameInput = document.getElementById('nameInput');
+    const name = nameInput.value;
+    const dateTime = new Date().toISOString();
+    const successMessage = document.getElementById('successMessage');
 
-      push(ref(database, 'participants'), {
-          nome: name,
-          data_hora: dateTime
-      });
-  }
+    push(ref(database, 'participants'), {
+        nome: name,
+        data_hora: dateTime
+    }).then(() => {
+        // Mostra a mensagem de sucesso
+        successMessage.classList.remove('hidden');
+        successMessage.classList.add('visible');
+
+        // Oculta a mensagem de sucesso após 2 segundos
+        setTimeout(() => {
+            successMessage.classList.remove('visible');
+            successMessage.classList.add('hidden');
+        }, 15000);
+    });
+
+    nameInput.value = ''; // Limpa o campo de entrada
+}
+
 
 onValue(ref(database, 'participants'), (snapshot) => {
     const participantsTable = document.getElementById('participantsTable');
     
+    // Inicializa contadores
+    let chocolateCount = 0;
+    let moneyCount = 0;
+
     participantsTable.innerHTML = `
         <tr>
             <th>Nome</th>
@@ -73,9 +100,18 @@ onValue(ref(database, 'participants'), (snapshot) => {
         const cellDate = row.insertCell(1);
         
         cellName.textContent = childData.nome;
-        cellDate.textContent = formatDateTime(childData.data_hora); // Mova esta linha aqui
+        cellDate.textContent = formatDateTime(childData.data_hora);
+
+        // Incrementa os contadores
+        chocolateCount += 1;
+        moneyCount += 10;
     });
+
+    // Atualiza os elementos do contador
+    document.getElementById('chocolateCount').textContent = `Chocolates🍫: ${chocolateCount}`;
+    document.getElementById('moneyCount').textContent = `Dinheiro💰: $${moneyCount}`;
 });
+
 
 // Formata a data e hora para um formato mais legível (24 horas)
 function formatDateTime(isoString) {
