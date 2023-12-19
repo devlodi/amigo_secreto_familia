@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f7f7f7;
-    font-size: 16px;
+    font-size: 16px; /* Tamanho de fonte base para mobile */
 }
 
 .main-container {
@@ -16,27 +16,34 @@ body {
 h1, h2 {
     color: #333;
     margin: 20px 0;
+    font-size: 24px; /* Fonte maior para títulos em mobile */
 }
 
 .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 input[type="text"] {
-    padding: 10px;
-    margin-right: 10px;
-    width: calc(100% - 120px); /* Reserva espaço para o botão */
+    padding: 15px;
+    margin-bottom: 10px; /* Espaço entre o input e o botão */
+    width: 80%; /* Largura ajustada para mobile */
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 18px; /* Fonte maior para melhor leitura */
 }
 
 button {
-    padding: 10px 20px;
+    padding: 15px 25px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 18px; /* Fonte maior para melhor leitura */
+    width: 50%; /* Largura ajustada para mobile */
 }
 
 button:hover {
@@ -50,7 +57,25 @@ table {
 }
 
 th, td {
-    text-align: left;
-    padding: 12px;
+    text-align: center; /* Centraliza o texto nas tabelas */
+    padding: 15px;
     border-bottom: 1px solid #ddd;
+    font-size: 18px; /* Fonte maior para tabelas em mobile */
 }
+
+@media (max-width: 600px) {
+    /* Estilos para tablets e desktops */
+    .input-group {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    input[type="text"] {
+        margin-right: 10px;
+        margin-bottom: 0; /* Remover margem inferior */
+        width: calc(100% - 150px); /* Ajuste da largura */
+    }
+
+    button {
+        width: auto; /* Largura padrão para botão */
+    }
