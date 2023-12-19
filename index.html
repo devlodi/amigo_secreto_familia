@@ -23,13 +23,56 @@
     </table>
 </div>
 
-<!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-<!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+ const firebaseConfig = {
+  apiKey: "AIzaSyDXOqm52mwBr4RH3KuP5MrGeyYg1qQy27M",
+  authDomain: "amigo-secreto-8b3ae.firebaseapp.com",
+  databaseURL: "https://amigo-secreto-8b3ae-default-rtdb.firebaseio.com",
+  projectId: "amigo-secreto-8b3ae",
+  storageBucket: "amigo-secreto-8b3ae.appspot.com",
+  messagingSenderId: "133611460498",
+  appId: "1:133611460498:web:2641aafc8c318aaa4d134b"
+};
 
-<script src="your-script.js"></script> <!-- Remova type="module" -->
+
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+
+  window.submitName = function() {
+      const nameInput = document.getElementById('nameInput');
+      const name = nameInput.value;
+      const dateTime = new Date().toISOString();
+
+      push(ref(database, 'participants'), {
+          nome: name,
+          data_hora: dateTime
+      });
+  }
+
+  onValue(ref(database, 'participants'), (snapshot) => {
+      const participantsTable = document.getElementById('participantsTable');
+      
+      participantsTable.innerHTML = `
+          <tr>
+              <th>Nome</th>
+              <th>Data e Hora</th>
+          </tr>
+      `;
+      
+      snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          const row = participantsTable.insertRow(-1);
+          const cellName = row.insertCell(0);
+          const cellDate = row.insertCell(1);
+          
+          cellName.textContent = childData.nome;
+          cellDate.textContent = childData.data_hora;
+      });
+  });
+</script>
 
 </body>
 </html>
