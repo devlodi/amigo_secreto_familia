@@ -150,8 +150,7 @@ tr:last-child td:last-child {
     background-size: cover;
     padding: 20px;
     border-radius: 10px;
-    width: 77%; /* Ajuste conforme necessário */
-    max-width: 400px; /* Ajuste conforme necessário */
+    max-width: 650px; /* Ajuste conforme necessário */
     text-align: center;
 }
 
