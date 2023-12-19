@@ -129,6 +129,65 @@ tr:last-child td:last-child {
     border-bottom-right-radius: 10px;
 }
 
+.modal-aviso {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,95%);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.modal-aviso-content {
+    position: relative;
+    background-image: url('https://raw.githubusercontent.com/devlodi/catalogo_inacio_aneethun/main/imagens/natal.png');
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+    width: 77%; /* Ajuste conforme necessário */
+    max-width: 400px; /* Ajuste conforme necessário */
+    text-align: center;
+}
+
+.modal-aviso-texto {
+    color: white; /* Ou outra cor que destaque sobre a imagem */
+    font-size: 18px; /* Ajuste o tamanho conforme necessário */
+    padding: 20px; /* Ajuste o espaçamento conforme necessário */
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.6); /* Fundo semi-transparente para destaque */
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn-entendi {
+    margin-top: 20px; /* Ajuste o espaçamento conforme necessário */
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    animation: pulseAnimation 2s infinite; /* Aplica a animação ao botão */
+    /* Mantenha um tempo de animação lento para uma experiência do usuário suave */
+}
+
+
 @media (min-width: 600px) {
     th, td {
         font-size: calc(2vw + 8px); /* Ajuste da fonte para telas maiores, como tablets */
@@ -158,6 +217,5 @@ tr:last-child td:last-child {
     button {
         width: auto; /* Largura padrão para botão */
     }
-
 
 
